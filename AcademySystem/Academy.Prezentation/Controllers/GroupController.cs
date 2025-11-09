@@ -1,0 +1,165 @@
+﻿using Academy.Prezentation.Helpers;
+using Domain.Entities;
+using Service.Sevices.Implementations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Academy.Prezentation.Controllers
+{
+    internal class GroupController
+    {
+        GroupsService _groupsService = new();
+        public void CreateGroup()
+        {
+            Helper.PrintColor(ConsoleColor.Blue, "Add Group Name:");
+            string groupName = Console.ReadLine();
+            string groupTrueName;
+            Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher:");
+            string groupTeacher = Console.ReadLine();
+            Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
+            string groupRoom = Console.ReadLine();
+            Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
+            var result = _groupsService.CreateGroup(group);
+            Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+        }
+        public void GetGroupById()
+        {
+        GroupId: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id:");
+            string groupId = Console.ReadLine();
+            int id;
+            bool isGroupId = int.TryParse(groupId, out id);
+            if (isGroupId)
+            {
+                Groups group = _groupsService.GetGroupById(id);
+                if (group != null)
+                {
+                    Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "Id not found");
+                    goto GroupId;
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add corret id Type!");
+                goto GroupId;
+            }
+        }
+        public void GetAllGroups()
+        {
+            List<Groups> groups = _groupsService.GetAllGroups();
+            if (groups != null) {
+                foreach (Groups group in groups)
+                {
+                    Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Pleace Creat Group");
+            }
+        }
+        public void DaleteGroup()
+        {
+        GroupId: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id:");
+            string groupId = Console.ReadLine();
+            int id;
+            bool isGroupId = int.TryParse(groupId, out id);
+            if (isGroupId) {
+                _groupsService.DeleteGroup(id);
+                Helper.PrintColor(ConsoleColor.Green, "Data Delete");
+
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add corret group type!");
+                goto GroupId;
+            }
+
+        }
+        public void GetAllGroupsByRoom()
+        {
+            Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
+            string groupName = Console.ReadLine();
+
+            List<Groups> groups=_groupsService.GetAllGroupsByRoom(groupName);
+            if (groups.Count !=0) {
+                foreach (Groups group in groups) {
+                    Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Room not found for search text!");
+            }
+        }
+        public void GetAllGroupsByTeacher()
+        {
+        SearchText: Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher");
+            string teacherName = Console.ReadLine();
+
+            List<Groups> groups = _groupsService.GetAllGroupsByRoom(teacherName);
+            if (groups.Count != 0)
+            {
+                foreach (Groups group in groups)
+                {
+                    Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Teacher not found for search text!");
+                goto SearchText;
+            }
+        }
+
+        public void UpdateGroup()
+        {
+
+        GroupId: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id:");
+            string groupId = Console.ReadLine();
+            int id;
+            bool isgroupId= int.TryParse( groupId, out id);
+
+            if (isgroupId) {
+                var findGroup = _groupsService.GetGroupById(id);
+                if (findGroup != null)
+                {
+                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Name:");
+                    string groupName = Console.ReadLine();
+                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Teacher:");
+                    string groupTeacher = Console.ReadLine();
+                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Room:");
+                    string groupRoom = Console.ReadLine();
+                    Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
+                    var resultGroups = _groupsService.UpdateGroup(id, group);
+                    if (resultGroups == null )
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "Pleace try again:");
+                        goto GroupId;
+                    }
+                    else
+                    {
+                        Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                    }
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "Group not found:");
+                    goto GroupId;
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add corret GroupId Type!");
+                goto GroupId;
+            }
+        }
+    }
+}
