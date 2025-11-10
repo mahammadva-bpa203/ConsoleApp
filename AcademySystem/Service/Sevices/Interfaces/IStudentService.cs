@@ -9,11 +9,11 @@ namespace Service.Sevices.Interfaces
 {
     public interface IStudentService
     {
-        Student CreateStudent(Student student);
+        Student CreateStudent(int groupId ,Student student);
         Student UpdateStudent(Student student);
         Student Getstudentbyid(int id);
         void DeleteStudent(int id);
-        List<Student> GetStudentsByAge(int ageId);
+        List<Student> GetStudentsByAge(int age);
         List<Student> GetAllStudentsByGroupId(int groupId);
         Student SearchMethodForGroupsByName(string groupByName,Student student);//bax
         Student SearchMethodForStudentsByNameOrSurname(string studentName,Student student);//bax

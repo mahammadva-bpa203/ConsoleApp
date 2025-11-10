@@ -53,12 +53,13 @@ namespace Repository.Repostories.Implementations
 
         public void UpdateGroup(Groups data)
         {
-            Groups groups=GetGroupById(g=>g.Id==data.Id);
-            if (string.IsNullOrEmpty(data.Name))
+            Groups groups=Get(g=>g.Id==data.Id);
+            if (groups == null) return;
+            if (!string.IsNullOrEmpty(data.Name))
             {
                 groups.Name = data.Name;
             }
-            if (string.IsNullOrEmpty(data.Room))
+            if (!string.IsNullOrEmpty(data.Room))
             {
                 groups.Room = data.Room;
             }

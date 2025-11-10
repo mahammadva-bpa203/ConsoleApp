@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Academy.Prezentation.Controllers
 {
@@ -15,13 +16,27 @@ namespace Academy.Prezentation.Controllers
         GroupsService _groupsService = new();
         public void CreateGroup()
         {
-            Helper.PrintColor(ConsoleColor.Blue, "Add Group Name:");
+        Name: Helper.PrintColor(ConsoleColor.Blue, "Add Group Name:");
             string groupName = Console.ReadLine();
-            string groupTrueName;
-            Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher:");
+            if(groupName == "")
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add Group Name:");
+                goto Name;
+            }
+        Teacher: Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher:");
             string groupTeacher = Console.ReadLine();
-            Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
+            if (groupTeacher == "")
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add Group Teacher:");
+                goto Teacher;
+            }
+        Room: Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
             string groupRoom = Console.ReadLine();
+            if (groupRoom == "")
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Add Group Room:");
+                goto Room;
+            }
             Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
             var result = _groupsService.CreateGroup(group);
             Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
@@ -124,6 +139,11 @@ namespace Academy.Prezentation.Controllers
 
         GroupId: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id:");
             string groupId = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(groupId)) {
+                Helper.PrintColor(ConsoleColor.Yellow, "Update operation cancelled.");
+                return;
+            }
             int id;
             bool isgroupId= int.TryParse( groupId, out id);
 
@@ -133,10 +153,22 @@ namespace Academy.Prezentation.Controllers
                 {
                     Helper.PrintColor(ConsoleColor.Blue, "Add Group new Name:");
                     string groupName = Console.ReadLine();
+                    if(groupName is null)
+                    {
+                        groupName=findGroup.Name;
+                    }
                     Helper.PrintColor(ConsoleColor.Blue, "Add Group new Teacher:");
                     string groupTeacher = Console.ReadLine();
+                    if (groupTeacher is null)
+                    {
+                        groupTeacher =findGroup.Teacher;
+                    }
                     Helper.PrintColor(ConsoleColor.Blue, "Add Group new Room:");
                     string groupRoom = Console.ReadLine();
+                    if (groupRoom is null)
+                    {
+                        groupRoom =findGroup.Room;
+                    }
                     Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
                     var resultGroups = _groupsService.UpdateGroup(id, group);
                     if (resultGroups == null )
@@ -152,7 +184,7 @@ namespace Academy.Prezentation.Controllers
                 else
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Group not found:");
-                    goto GroupId;
+                    return;
                 }
             }
             else
@@ -161,5 +193,7 @@ namespace Academy.Prezentation.Controllers
                 goto GroupId;
             }
         }
+
+
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj",
         "projectName": "Academy.Prezentation",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Academy.Prezentation.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Academy.Prezentation\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj"
+              "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\Service.csproj"
+              "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Service.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -141,14 +141,14 @@
         }
       }
     },
-    "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\Repository.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -169,8 +169,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Domain\\Domain.csproj"
+              "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Domain\\Domain.csproj"
               }
             }
           }
@@ -210,14 +210,14 @@
         }
       }
     },
-    "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\Service.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\Service.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Service.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Service\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -238,8 +238,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Desktop\\AcademySystem\\Repository\\Repository.csproj"
+              "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repository.csproj"
               }
             }
           }

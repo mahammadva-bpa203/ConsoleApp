@@ -1,4 +1,6 @@
 ﻿using Domain.Entities;
+using Repository.Data;
+using Repository.Excemtions;
 using Repository.Repostories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,12 +14,26 @@ namespace Repository.Repostories.Implementations
     {
         public void CreateStudent(Student data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (data is null) throw new NotFoundExceptation("Data Not Found");
+
+                AppDbContext<Student>.datas.Add(data);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void DeleteStudent(Student data)
         {
-            throw new NotImplementedException();
+            AppDbContext<Student>.datas.Remove(data);
+        }
+
+        public Student Get(Predicate<Student> predicate)
+        {
+            
         }
 
         public List<Student> GetAllStudentsByGroupId(Predicate<Student> predicate)
@@ -27,7 +43,7 @@ namespace Repository.Repostories.Implementations
 
         public Student Getstudentbyid(Predicate<Student> predicate)
         {
-            throw new NotImplementedException();
+            return predicate != null ? AppDbContext<Student>.datas.Find(predicate) : null;
         }
 
         public Student GetStudentsByAge(Predicate<Student> predicate)
