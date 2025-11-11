@@ -63,7 +63,22 @@ namespace Repository.Repostories.Implementations
 
         public void UpdateStudent(Student data)
         {
-            throw new NotImplementedException();
+            Student student=Get(s=>s.Id==data.Id);
+            if(student==null) return;
+
+            if (!string.IsNullOrEmpty(student.Name)) { 
+                student.Name = data.Name;
+            }
+            if (!string.IsNullOrEmpty(student.Surname)) { 
+                student .Surname = data.Surname;
+            }
+            if (data.Age>0) { 
+                student.Age = data.Age;
+            }
+            if (data.Group != null)
+            {
+                student.Group = data.Group;
+            }
         }
     }
 }

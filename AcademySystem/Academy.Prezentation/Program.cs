@@ -26,46 +26,49 @@ namespace Academy.Prezentation
                 {
                     switch (sellectTrueOption)
                     {
-                        case 1:
+                        case (int)Menus.CreateGroup:
                             groupController.CreateGroup();
                             break;
-                        case 2:
+                        case (int)Menus.UpdateGroup:
                             groupController.UpdateGroup();
                             break;
-                        case 3:
+                        case (int)Menus.DeleteGroup:
                             groupController.DaleteGroup();
                             break;
-                        case 4:
+                        case (int)Menus.GetGroupById:
                             groupController.GetGroupById();
                             break;
-                        case 5:
+                        case (int)Menus.GetAllGroupsByTeacher:
                             groupController.GetAllGroupsByTeacher();
                             break;
-                        case 6:
+                        case (int)Menus.GetAllGroupsByRoom:
                             groupController.GetAllGroupsByRoom();
                             break;
-                        case 7:
+                        case (int)Menus.GetAllGroups:
                             groupController.GetAllGroups();
                             break;
-                        case 8:
+                        case (int)Menus.CreateStudent:
                             studentController.CreateStudent();
                             break;
-                        case 10:
+                        case (int)Menus.UpdateStudent:
+                            studentController.UpdateStudent();
+                            break;
+                        case (int)Menus.GetStudentById:
                             studentController.Getstudentbyid();
                             break;
-                        case 11:
+                        case (int)Menus.DeleteStudent:
                             studentController.DeleteStudent();
                             break;
-                        case 12:
+                        case (int)Menus.GetStudentsByAge:
                             studentController.GetStudentsByAge();
                             break;
-                        case 13:
+                        case (int)Menus.GetAllStudentsByGroupId:
                             studentController.GetAllStudentsByGroupId();
                             break;
-                        case 14:
+                        case (int)Menus.SearchMethodForGroupsByName:
                             groupController.SearchMethodForGroupsByName();
                             break;
-                        case 15:
+                        case (int)Menus.SearchMethodForStudentsByNameOrSurname:
                             studentController.SearchMethodForStudentsByNameOrSurname();
                             break;
                     }

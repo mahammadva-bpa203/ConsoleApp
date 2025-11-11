@@ -52,14 +52,14 @@ namespace Service.Sevices.Implementations
 
         public List<Student> GetStudentsByAge(int age)
         {
-            List<Student> students = _studentRepository.GetAllStudentsByGroupId(s => s.Age == age);
-            return null;
+            List<Student> students = _studentRepository.GetAll(s => s.Age == age);
+            return students;
         }
 
         public List<Student> SearchMethodForStudentsByNameOrSurname(string nameOrSurname)
         {
-            List<Student > studentName =_studentRepository.GetAll(s=>s.Name==nameOrSurname);
-            List<Student > studentSurname =_studentRepository.GetAll(s=>s.Surname==nameOrSurname);
+            List<Student > studentName =_studentRepository.GetAll(s=>s.Name.Trim().ToLower() == nameOrSurname.Trim().ToLower());
+            List<Student > studentSurname =_studentRepository.GetAll(s=>s.Surname.Trim().ToLower() ==nameOrSurname.Trim().ToLower());
 
             if (studentName.Count > 0) return studentName;
             else if (studentSurname.Count > 0) return studentSurname;
@@ -67,9 +67,17 @@ namespace Service.Sevices.Implementations
 
         }
 
-        public Student UpdateStudent(Student student)
+        public Student UpdateStudent(int id, Student student)
         {
-            throw new NotImplementedException();
+            Student student1 = Getstudentbyid(id);
+            if (student1 == null) return null;
+            student1.Name = student.Name;
+            student1.Surname=student.Surname;
+            student1.Age = student.Age;
+            student1.Group = student.Group;
+            _studentRepository.UpdateStudent(student1);
+            return Getstudentbyid(id);
+
         }
     }
 }

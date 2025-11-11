@@ -19,21 +19,21 @@ namespace Academy.Prezentation.Controllers
         {
         Name: Helper.PrintColor(ConsoleColor.Blue, "Add Group Name:");
             string groupName = Console.ReadLine();
-            if(groupName == "")
+            if(string.IsNullOrEmpty(groupName))
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Name:");
                 goto Name;
             }
         Teacher: Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher:");
             string groupTeacher = Console.ReadLine();
-            if (groupTeacher == "")
+            if (string.IsNullOrEmpty(groupTeacher))
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Teacher:");
                 goto Teacher;
             }
         Room: Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
             string groupRoom = Console.ReadLine();
-            if (groupRoom == "")
+            if (string.IsNullOrEmpty(groupRoom))
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Room:");
                 goto Room;

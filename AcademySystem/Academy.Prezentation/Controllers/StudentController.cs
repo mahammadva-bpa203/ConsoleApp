@@ -4,9 +4,11 @@ using Service.Sevices.Implementations;
 using Service.Sevices.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repository.Repostories.Implementations;
 
 namespace Academy.Prezentation.Controllers
 {
@@ -23,21 +25,21 @@ namespace Academy.Prezentation.Controllers
             {
             Name: Helper.PrintColor(ConsoleColor.Blue, "Add student Name:");
                 string studentName = Console.ReadLine();
-                if (studentName == "")
+                if (string.IsNullOrEmpty(studentName))
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Add student Name:");
                     goto Name;
                 }
             Surname: Helper.PrintColor(ConsoleColor.Blue, "Add student Surname:");
                 string studentSurname = Console.ReadLine();
-                if (studentSurname == "")
+                if (string.IsNullOrEmpty(studentSurname))
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Add student Surname:");
                     goto Surname;
                 }
             Groupsid: Helper.PrintColor(ConsoleColor.Blue, "Add student Age:");
                 string studentAge = Console.ReadLine();
-                if (studentAge == "")
+                if (string.IsNullOrEmpty(studentAge))
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Add student Age:");
                     goto Groupsid;
@@ -207,6 +209,94 @@ namespace Academy.Prezentation.Controllers
                 Helper.PrintColor(ConsoleColor.Red, "Name or Surname can't be empty");
                 goto Name;
             }
+        }
+
+        public void UpdateStudent()
+        {
+        Idget: Helper.PrintColor(ConsoleColor.Blue, "Add Student Id:");
+            string studentId = Console.ReadLine();
+            if (studentId == null) {
+                Helper.PrintColor(ConsoleColor.Red, " Enter The Id");
+                goto Idget;
+            }
+            int id;
+            bool isStudentId = int.TryParse(studentId, out id);
+            if (isStudentId) { 
+                var findid = _studentSevice.Getstudentbyid(id);
+                if (findid != null) {
+                Namestudent: Helper.PrintColor(ConsoleColor.Blue, "Enter New Name Or Previous Name");
+                    string newstudentName = Console.ReadLine();
+                    if (string.IsNullOrEmpty(newstudentName)) {
+                        Helper.PrintColor(ConsoleColor.Red, "add  Name");
+                        goto Namestudent;
+                    }
+                Surnamestudent: Helper.PrintColor(ConsoleColor.Blue, "Enter New Surname Or Previous Surname");
+                    string newstudentSurname = Console.ReadLine();
+                    if (string.IsNullOrEmpty(newstudentSurname))
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "add  Name");
+                        goto Surnamestudent;
+                    }
+                Agestudent: Helper.PrintColor(ConsoleColor.Blue, "Enter New Age Or Previous Age");
+                    string newStudentAge = Console.ReadLine();
+                    if (string.IsNullOrEmpty(newStudentAge))
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "add  Age");
+                        goto Agestudent;
+                    }
+                    int age;
+                    bool isnewStudentAge=int.TryParse(newStudentAge, out age);
+                    if (isnewStudentAge == false) {
+                        Helper.PrintColor(ConsoleColor.Red, "Invalid Age type");
+                        goto Agestudent;
+                    }
+                Groupstudent: Helper.PrintColor(ConsoleColor.Blue, "Enter New  groups id");
+                    string newStudentGroup = Console.ReadLine();
+                    if (string.IsNullOrEmpty(newStudentGroup))
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "add  group id");
+                        goto Groupstudent;
+                    }
+                    int groupId;
+                    bool isnewStudentGroup=int.TryParse(newStudentGroup, out groupId);
+
+                    if (isnewStudentGroup == false) {
+                        Helper.PrintColor(ConsoleColor.Red, "Invalid ID type");
+                        return;
+                    }
+                    var groupRepo = new GroupsRepository();
+                    var newGroup = groupRepo.Get(g => g.Id == groupId);
+                    if(newGroup == null)
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "Group not found.");
+                        goto Groupstudent;
+                    }
+                    Student student=new Student { Name= newstudentName,Surname= newstudentSurname ,Age= age, Group= newGroup };
+
+                    var students =_studentSevice.UpdateStudent(id,student);
+                    if (students != null) {
+                        Helper.PrintColor(ConsoleColor.Green, $"ID: {students.Id},Name: {students.Name},Surname: {students.Surname},Age: {students.Age},Group: {students.Group.Name}");
+                    }
+                    else
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "not found id");
+                        return;
+                    }
+
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "not found id");
+                    return;
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Invalid ID type");
+                goto Idget;
+            }
+            
+
         }
     }
 }
