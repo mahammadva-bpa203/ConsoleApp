@@ -20,7 +20,10 @@ namespace Repository.Repostories.Interfaces
         List<T> GetAllGroupsByRoom(Predicate<T> predicate);
         List<T> GetAllGroups(Predicate<T> predicate);
 
-        
+        List<T> SearchMethodForGroupsByName(Predicate<T> predicate);
+        T Get(Predicate<T> predicate);
+
+
 
     }
 }

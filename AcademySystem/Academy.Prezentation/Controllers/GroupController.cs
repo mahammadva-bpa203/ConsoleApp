@@ -1,6 +1,7 @@
 ﻿using Academy.Prezentation.Helpers;
 using Domain.Entities;
 using Service.Sevices.Implementations;
+using Service.Sevices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,64 +134,85 @@ namespace Academy.Prezentation.Controllers
                 goto SearchText;
             }
         }
-
         public void UpdateGroup()
         {
-
-        GroupId: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id:");
+        GroupID: Helper.PrintColor(ConsoleColor.Blue, "Add Group Id");
             string groupId = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(groupId)) {
+            if (string.IsNullOrEmpty(groupId))
+            {
                 Helper.PrintColor(ConsoleColor.Yellow, "Update operation cancelled.");
                 return;
             }
-            int id;
-            bool isgroupId= int.TryParse( groupId, out id);
 
-            if (isgroupId) {
+            int id;
+            bool isGroupID = int.TryParse(groupId, out id);
+            if (isGroupID)
+            {
                 var findGroup = _groupsService.GetGroupById(id);
                 if (findGroup != null)
                 {
-                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Name:");
-                    string groupName = Console.ReadLine();
-                    if(groupName is null)
+                    Helper.PrintColor(ConsoleColor.Blue, "Add new Group name or skip via current name");
+                    string newGroupName = Console.ReadLine();
+                    if (newGroupName is null)
                     {
-                        groupName=findGroup.Name;
+                        newGroupName = findGroup.Name;
                     }
-                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Teacher:");
-                    string groupTeacher = Console.ReadLine();
-                    if (groupTeacher is null)
+
+                    Helper.PrintColor(ConsoleColor.Blue, "Add new Teacher or skip via current Teacher");
+                    string newTeacher = Console.ReadLine();
+                    if (newTeacher is null)
                     {
-                        groupTeacher =findGroup.Teacher;
+                        newTeacher = findGroup.Teacher;
                     }
-                    Helper.PrintColor(ConsoleColor.Blue, "Add Group new Room:");
-                    string groupRoom = Console.ReadLine();
-                    if (groupRoom is null)
+
+                    Helper.PrintColor(ConsoleColor.Blue, "Add new Room or skip via current Room");
+                    string newRoom = Console.ReadLine();
+                    if (newRoom is null)
                     {
-                        groupRoom =findGroup.Room;
+                        newRoom = findGroup.Room;
                     }
-                    Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
-                    var resultGroups = _groupsService.UpdateGroup(id, group);
-                    if (resultGroups == null )
-                    {
-                        Helper.PrintColor(ConsoleColor.Red, "Pleace try again:");
-                        goto GroupId;
-                    }
+
+                    Groups groups = new Groups { Name = newGroupName, Teacher = newTeacher, Room = newRoom };
+
+                    var updateGroups = _groupsService.UpdateGroup(id, groups);
+
+                    if (updateGroups == null) { Helper.PrintColor(ConsoleColor.Red, "Library not Updated, please try again"); goto GroupID; }
                     else
                     {
-                        Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                        Helper.PrintColor(ConsoleColor.Green, $"Group ID: {id}, Group name: {groups.Name}, Teacher: {groups.Teacher}, Group Room: {groups.Room} ");
                     }
                 }
                 else
                 {
-                    Helper.PrintColor(ConsoleColor.Red, "Group not found:");
+                    Helper.PrintColor(ConsoleColor.Red, "Not Found ID or doesn't exists any group, try again.");
+
                     return;
                 }
             }
             else
             {
-                Helper.PrintColor(ConsoleColor.Red, "Add corret GroupId Type!");
-                goto GroupId;
+                Helper.PrintColor(ConsoleColor.Red, "Invalid ID type, try again.");
+                goto GroupID;
+            }
+
+        }
+
+
+        public void SearchMethodForGroupsByName()
+        {
+            Helper.PrintColor(ConsoleColor.Blue, "Add Group Name");
+            string groupName = Console.ReadLine();
+            List<Groups> groups = _groupsService.GetAllGroupsByRoom(groupName);
+            if (groups.Count != 0)
+            {
+                foreach (Groups group in groups)
+                {
+                    Helper.PrintColor(ConsoleColor.Green, $"Group Id:{group.Id},Group Name:{group.Name},Group Teachar:{group.Teacher},Group Room:{group.Room}");
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Name not found for search text!");
             }
         }
 

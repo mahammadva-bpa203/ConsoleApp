@@ -13,10 +13,9 @@ namespace Service.Sevices.Interfaces
         Student UpdateStudent(Student student);
         Student Getstudentbyid(int id);
         void DeleteStudent(int id);
-        List<Student> GetStudentsByAge(int age);
+        
         List<Student> GetAllStudentsByGroupId(int groupId);
-        Student SearchMethodForGroupsByName(string groupByName,Student student);//bax
-        Student SearchMethodForStudentsByNameOrSurname(string studentName,Student student);//bax
-
+        List<Student> SearchMethodForStudentsByNameOrSurname(string nameOrSurname);
+        List<Student> GetStudentsByAge(int age);
     }
 }

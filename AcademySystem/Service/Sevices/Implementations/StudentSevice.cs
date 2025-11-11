@@ -22,9 +22,10 @@ namespace Service.Sevices.Implementations
         }
         public Student CreateStudent(int groupId, Student student)
         {
-            var groups =_groupsRepository.GetAllGroups(g=>g.Id == groupId);
+            var groups =_groupsRepository.Get(g=>g.Id == groupId);
             if (groups is null) return null;
             student.Id = _count;
+            student.Group = groups;
             _count++;
             _studentRepository.CreateStudent(student);
             return student;
@@ -38,7 +39,8 @@ namespace Service.Sevices.Implementations
 
         public List<Student> GetAllStudentsByGroupId(int groupId)
         {
-            throw new NotImplementedException();
+            List<Student> students = _studentRepository.GetAll(s => s.Group.Id == groupId);
+            return students;
         }
 
         public Student Getstudentbyid(int id)
@@ -50,17 +52,19 @@ namespace Service.Sevices.Implementations
 
         public List<Student> GetStudentsByAge(int age)
         {
-            return _studentRepository(s => s.Age == age);
+            List<Student> students = _studentRepository.GetAllStudentsByGroupId(s => s.Age == age);
+            return null;
         }
 
-        public Student SearchMethodForGroupsByName(string groupByName, Student student)
+        public List<Student> SearchMethodForStudentsByNameOrSurname(string nameOrSurname)
         {
-            throw new NotImplementedException();
-        }
+            List<Student > studentName =_studentRepository.GetAll(s=>s.Name==nameOrSurname);
+            List<Student > studentSurname =_studentRepository.GetAll(s=>s.Surname==nameOrSurname);
 
-        public Student SearchMethodForStudentsByNameOrSurname(string studentName, Student student)
-        {
-            throw new NotImplementedException();
+            if (studentName.Count > 0) return studentName;
+            else if (studentSurname.Count > 0) return studentSurname;
+            else return null;
+
         }
 
         public Student UpdateStudent(Student student)

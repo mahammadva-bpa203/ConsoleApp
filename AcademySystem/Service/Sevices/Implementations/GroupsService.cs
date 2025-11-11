@@ -59,6 +59,11 @@ namespace Service.Sevices.Implementations
             return group;
         }
 
+        public List<Groups> SearchMethodForGroupsByName(string name)
+        {
+            return _groupsRepository.GetAllGroups(g => g.Name.Trim().ToLower() == name.Trim().ToLower());
+        }
+
         public Groups UpdateGroup(int id, Groups group)
         {
             Groups groups= GetGroupById(id);

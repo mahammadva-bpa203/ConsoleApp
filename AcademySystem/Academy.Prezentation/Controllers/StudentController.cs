@@ -1,6 +1,7 @@
 ﻿using Academy.Prezentation.Helpers;
 using Domain.Entities;
 using Service.Sevices.Implementations;
+using Service.Sevices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,26 +44,38 @@ namespace Academy.Prezentation.Controllers
                 }
                 int age;
                 bool isage = int.TryParse(studentAge, out age);
-
-                if (isage)
+                if (age >= 0)
                 {
-                    Student student = new Student { Name = studentName, Surname = studentSurname, Age = age };
-                    var result = _studentSevice.CreateStudent(id, student);
-                    if (result != null)
+                    if (isage)
                     {
-                        Helper.PrintColor(ConsoleColor.Green, $"Student Id:{student.Id},Student Name:{student.Name},Student SurName:{student.Surname},Student age:{student.Age}");//Student group:{student.group.name}
+                        studentName = char.ToUpper(studentName[0]) + studentName.Substring(1).ToLower();
+                        studentSurname = char.ToUpper(studentSurname[0]) + studentSurname.Substring(1).ToLower();
+
+                        Student student = new Student { Name = studentName, Surname = studentSurname, Age = age };
+                        var result = _studentSevice.CreateStudent(id, student);
+                        if (result != null)
+                        {
+                            Helper.PrintColor(ConsoleColor.Green, $"Student Id:{student.Id},Student Name:{student.Name},Student SurName:{student.Surname},Student age:{student.Age},student Group:{result.Group.Name}");
+                        }
+                        else
+                        {
+                            Helper.PrintColor(ConsoleColor.Red, "student Not Fount! ");
+                            goto Groups;
+                        }
                     }
                     else
                     {
-                        Helper.PrintColor(ConsoleColor.Red, "student Not Fount! ");
-                        goto Groups;
+                        Helper.PrintColor(ConsoleColor.Red, "Add corret age Type! ");
+                        goto Groupsid;
                     }
                 }
                 else
                 {
-                    Helper.PrintColor(ConsoleColor.Red, "Add corret age Type! ");
+                    Helper.PrintColor(ConsoleColor.Red, "The number cannot be less than zero.");
                     goto Groupsid;
                 }
+
+
             }
         }
 
@@ -109,6 +122,90 @@ namespace Academy.Prezentation.Controllers
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add corret group type!");
                 goto Groupsid;
+            }
+        }
+
+        public void GetStudentsByAge()
+        {
+        Age: Helper.PrintColor(ConsoleColor.Blue, "Add Student age");
+            string groupAge = Console.ReadLine();
+            int age;
+            bool isGroupAge = int.TryParse(groupAge, out age);
+            if (isGroupAge)
+            {
+                var student = _studentSevice.GetStudentsByAge(age);
+                if (student != null)
+                {
+                    foreach (var item in student)
+                    {
+                        Helper.PrintColor(ConsoleColor.Green, $"Student Id:{item.Id},Student Name:{item.Name},Student SurName:{item.Surname},Student age:{item.Age},student Group:{item.Group.Name}");
+                    }
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Blue, "not Found Age");
+                    return;
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Blue, "Invalid ID type");
+                goto Age;
+            }
+
+        }
+
+        public void GetAllStudentsByGroupId()
+        {
+        Groupsid: Helper.PrintColor(ConsoleColor.Blue, "Add Student group id");
+            string groupId = Console.ReadLine();
+            int id;
+            bool isGroupId = int.TryParse(groupId, out id);
+            if (isGroupId)
+            {
+                var student = _studentSevice.GetAllStudentsByGroupId(id);
+                if (student != null)
+                {
+                    foreach (var item in student)
+                    {
+                        Helper.PrintColor(ConsoleColor.Green, $"Student Id:{item.Id},Student Name:{item.Name},Student SurName:{item.Surname},Student age:{item.Age},student Group:{item.Group.Name}");
+                    }
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "Id not Found");
+                    return;
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Invalid ID type");
+                goto Groupsid;
+            }
+        }
+
+        public void SearchMethodForStudentsByNameOrSurname()
+        {
+        Name: Helper.PrintColor(ConsoleColor.Blue, "Add Student Name or SurName");
+            string studentNameOrSurname = Console.ReadLine();
+            if (studentNameOrSurname != null) { 
+                var result =_studentSevice.SearchMethodForStudentsByNameOrSurname(studentNameOrSurname);
+                if(result != null)
+                {
+                    foreach (var item in result)
+                    {
+                        Helper.PrintColor(ConsoleColor.Green, $"Student Id:{item.Id},Student Name:{item.Name},Student SurName:{item.Surname},Student age:{item.Age},student Group:{item.Group.Name}");
+                    }
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "not Found");
+                }
+            }
+            else
+            {
+                Helper.PrintColor(ConsoleColor.Red, "Name or Surname can't be empty");
+                goto Name;
             }
         }
     }

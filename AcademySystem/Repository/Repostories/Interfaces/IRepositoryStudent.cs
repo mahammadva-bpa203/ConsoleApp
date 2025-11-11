@@ -13,11 +13,13 @@ namespace Repository.Repostories.Interfaces
         void UpdateStudent(T data);
         T Getstudentbyid(Predicate<T> predicate);
         void DeleteStudent(T data);
-        T GetStudentsByAge(Predicate<T> predicate);
+       
         List<T> GetAllStudentsByGroupId(Predicate<T> predicate);
-        T SearchMethodForGroupsByName(Predicate<T> predicate);
 
-        T SearchMethodForStudentsByNameOrSurname(Predicate<T> predicate);
+        List<T> GetStudentsByAge(Predicate<T> predicate);
+
+        List<T> SearchMethodForStudentsByNameOrSurname(Predicate<T> predicate);
+        T Get(Predicate<T> predicate);
 
     }
 }

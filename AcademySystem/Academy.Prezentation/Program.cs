@@ -45,16 +45,28 @@ namespace Academy.Prezentation
                             groupController.GetAllGroupsByRoom();
                             break;
                         case 7:
-                            groupController.GetAllGroups(); 
+                            groupController.GetAllGroups();
                             break;
                         case 8:
                             studentController.CreateStudent();
-                            break; 
+                            break;
                         case 10:
                             studentController.Getstudentbyid();
                             break;
                         case 11:
                             studentController.DeleteStudent();
+                            break;
+                        case 12:
+                            studentController.GetStudentsByAge();
+                            break;
+                        case 13:
+                            studentController.GetAllStudentsByGroupId();
+                            break;
+                        case 14:
+                            groupController.SearchMethodForGroupsByName();
+                            break;
+                        case 15:
+                            studentController.SearchMethodForStudentsByNameOrSurname();
                             break;
                     }
 

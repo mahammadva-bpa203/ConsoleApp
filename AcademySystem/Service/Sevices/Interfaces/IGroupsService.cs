@@ -18,6 +18,7 @@ namespace Service.Sevices.Interfaces
         List<Groups> GetAllGroupsByRoom(string room);
 
         List<Groups> GetAllGroups();
+        List<Groups> SearchMethodForGroupsByName(string name);
 
 
 

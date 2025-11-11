@@ -31,6 +31,11 @@ namespace Repository.Repostories.Implementations
             AppDbContext<Groups>.datas.Remove(data);
         }
 
+        public Groups Get(Predicate<Groups> predicate)
+        {
+            return predicate != null ? AppDbContext<Groups>.datas.Find(predicate) : null;
+        }
+
         public List<Groups> GetAllGroups(Predicate<Groups> predicate=null)
         {
             return predicate != null ? AppDbContext<Groups>.datas.FindAll(predicate):AppDbContext<Groups>.datas;
@@ -51,6 +56,11 @@ namespace Repository.Repostories.Implementations
             return predicate != null ? AppDbContext<Groups>.datas.Find(predicate) : null;
         }
 
+        public List<Groups> SearchMethodForGroupsByName(Predicate<Groups> predicate)
+        {
+            return predicate != null ? AppDbContext<Groups>.datas.FindAll(predicate) : AppDbContext<Groups>.datas;
+        }
+
         public void UpdateGroup(Groups data)
         {
             Groups groups=Get(g=>g.Id==data.Id);
@@ -63,11 +73,13 @@ namespace Repository.Repostories.Implementations
             {
                 groups.Room = data.Room;
             }
-            if (string.IsNullOrEmpty(data.Teacher))
+            if (!string.IsNullOrEmpty(data.Teacher))
             {
                 groups.Teacher = data.Teacher;
             }
 
         }
+
+       
     }
 }

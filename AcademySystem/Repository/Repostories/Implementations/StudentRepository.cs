@@ -16,7 +16,7 @@ namespace Repository.Repostories.Implementations
         {
             try
             {
-                if (data is null) throw new NotFoundExceptation("Data Not Found");
+                if (data == null) throw new NotFoundExceptation("Data Not Found");
 
                 AppDbContext<Student>.datas.Add(data);
             }
@@ -33,12 +33,17 @@ namespace Repository.Repostories.Implementations
 
         public Student Get(Predicate<Student> predicate)
         {
-            
+            return predicate != null ? AppDbContext<Student>.datas.Find(predicate) : null;
         }
+        public List<Student> GetAll(Predicate<Student> predicate)
+        {
+            return predicate != null ? AppDbContext<Student>.datas.FindAll(predicate) : AppDbContext<Student>.datas;
+        }
+
 
         public List<Student> GetAllStudentsByGroupId(Predicate<Student> predicate)
         {
-            throw new NotImplementedException();
+            return predicate != null ? AppDbContext<Student>.datas.FindAll(predicate) : AppDbContext<Student>.datas;
         }
 
         public Student Getstudentbyid(Predicate<Student> predicate)
@@ -46,19 +51,14 @@ namespace Repository.Repostories.Implementations
             return predicate != null ? AppDbContext<Student>.datas.Find(predicate) : null;
         }
 
-        public Student GetStudentsByAge(Predicate<Student> predicate)
+        public List<Student> GetStudentsByAge(Predicate<Student> predicate)
         {
-            throw new NotImplementedException();
+            return predicate != null ? AppDbContext<Student>.datas.FindAll(predicate) : AppDbContext<Student>.datas;
         }
 
-        public Student SearchMethodForGroupsByName(Predicate<Student> predicate)
+        public List<Student> SearchMethodForStudentsByNameOrSurname(Predicate<Student> predicate)
         {
-            throw new NotImplementedException();
-        }
-
-        public Student SearchMethodForStudentsByNameOrSurname(Predicate<Student> predicate)
-        {
-            throw new NotImplementedException();
+            return predicate != null ? AppDbContext<Student>.datas.FindAll(predicate) : AppDbContext<Student>.datas;
         }
 
         public void UpdateStudent(Student data)
