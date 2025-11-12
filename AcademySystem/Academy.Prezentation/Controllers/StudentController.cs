@@ -25,18 +25,48 @@ namespace Academy.Prezentation.Controllers
             {
             Name: Helper.PrintColor(ConsoleColor.Blue, "Add student Name:");
                 string studentName = Console.ReadLine();
+               
                 if (string.IsNullOrEmpty(studentName))
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Add student Name:");
                     goto Name;
                 }
+                foreach (char item in studentName)
+                {
+                    if (!char.IsLetter(item))
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "The name should consist of only letters:");
+                        goto Name;
+                    }
+                }
+                if (studentName.Length < 3)
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "The name must be at least 3 letters long.");
+                    goto Name;
+                }
+               
             Surname: Helper.PrintColor(ConsoleColor.Blue, "Add student Surname:");
                 string studentSurname = Console.ReadLine();
+             
                 if (string.IsNullOrEmpty(studentSurname))
                 {
                     Helper.PrintColor(ConsoleColor.Red, "Add student Surname:");
                     goto Surname;
                 }
+                foreach (char item in studentSurname)
+                {
+                    if (!char.IsLetter(item))
+                    {
+                        Helper.PrintColor(ConsoleColor.Red, "The SurName should consist of only letters:");
+                        goto Surname;
+                    }
+                }
+                if (studentSurname.Length < 3)
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "The surname must be at least 3 letters long.");
+                    goto Surname;
+                }
+              
             Groupsid: Helper.PrintColor(ConsoleColor.Blue, "Add student Age:");
                 string studentAge = Console.ReadLine();
                 if (string.IsNullOrEmpty(studentAge))
@@ -46,10 +76,11 @@ namespace Academy.Prezentation.Controllers
                 }
                 int age;
                 bool isage = int.TryParse(studentAge, out age);
-                if (age >= 0)
+
+
+                if (isage)
                 {
-                    if (isage)
-                    {
+                    if (age >= 17) {
                         studentName = char.ToUpper(studentName[0]) + studentName.Substring(1).ToLower();
                         studentSurname = char.ToUpper(studentSurname[0]) + studentSurname.Substring(1).ToLower();
 
@@ -67,17 +98,14 @@ namespace Academy.Prezentation.Controllers
                     }
                     else
                     {
-                        Helper.PrintColor(ConsoleColor.Red, "Add corret age Type! ");
-                        goto Groupsid;
-                    }
+                        Helper.PrintColor(ConsoleColor.Red, "Must be over 17 years old. ");
+                    }         
                 }
                 else
                 {
-                    Helper.PrintColor(ConsoleColor.Red, "The number cannot be less than zero.");
+                    Helper.PrintColor(ConsoleColor.Red, "Add corret age Type! ");
                     goto Groupsid;
                 }
-
-
             }
         }
 
@@ -117,8 +145,17 @@ namespace Academy.Prezentation.Controllers
             bool isstudentid = int.TryParse(studentid, out id);
             if (isstudentid)
             {
-                _studentSevice.DeleteStudent(id);
-                Helper.PrintColor(ConsoleColor.Green, "Data Dalete:");
+                Student student = _studentSevice.Getstudentbyid(id);
+                if (student != null) {
+                    _studentSevice.DeleteStudent(id);
+                    Helper.PrintColor(ConsoleColor.Green, "Data Dalete");
+                }
+                else
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "id not found");
+                    return;
+                }
+                
             }
             else
             {
@@ -190,9 +227,10 @@ namespace Academy.Prezentation.Controllers
         {
         Name: Helper.PrintColor(ConsoleColor.Blue, "Add Student Name or SurName");
             string studentNameOrSurname = Console.ReadLine();
-            if (studentNameOrSurname != null) { 
-                var result =_studentSevice.SearchMethodForStudentsByNameOrSurname(studentNameOrSurname);
-                if(result != null)
+            if (studentNameOrSurname != null)
+            {
+                var result = _studentSevice.SearchMethodForStudentsByNameOrSurname(studentNameOrSurname);
+                if (result != null)
                 {
                     foreach (var item in result)
                     {
@@ -215,18 +253,22 @@ namespace Academy.Prezentation.Controllers
         {
         Idget: Helper.PrintColor(ConsoleColor.Blue, "Add Student Id:");
             string studentId = Console.ReadLine();
-            if (studentId == null) {
+            if (studentId == null)
+            {
                 Helper.PrintColor(ConsoleColor.Red, " Enter The Id");
                 goto Idget;
             }
             int id;
             bool isStudentId = int.TryParse(studentId, out id);
-            if (isStudentId) { 
+            if (isStudentId)
+            {
                 var findid = _studentSevice.Getstudentbyid(id);
-                if (findid != null) {
+                if (findid != null)
+                {
                 Namestudent: Helper.PrintColor(ConsoleColor.Blue, "Enter New Name Or Previous Name");
                     string newstudentName = Console.ReadLine();
-                    if (string.IsNullOrEmpty(newstudentName)) {
+                    if (string.IsNullOrEmpty(newstudentName))
+                    {
                         Helper.PrintColor(ConsoleColor.Red, "add  Name");
                         goto Namestudent;
                     }
@@ -245,8 +287,9 @@ namespace Academy.Prezentation.Controllers
                         goto Agestudent;
                     }
                     int age;
-                    bool isnewStudentAge=int.TryParse(newStudentAge, out age);
-                    if (isnewStudentAge == false) {
+                    bool isnewStudentAge = int.TryParse(newStudentAge, out age);
+                    if (isnewStudentAge == false)
+                    {
                         Helper.PrintColor(ConsoleColor.Red, "Invalid Age type");
                         goto Agestudent;
                     }
@@ -258,23 +301,25 @@ namespace Academy.Prezentation.Controllers
                         goto Groupstudent;
                     }
                     int groupId;
-                    bool isnewStudentGroup=int.TryParse(newStudentGroup, out groupId);
+                    bool isnewStudentGroup = int.TryParse(newStudentGroup, out groupId);
 
-                    if (isnewStudentGroup == false) {
+                    if (isnewStudentGroup == false)
+                    {
                         Helper.PrintColor(ConsoleColor.Red, "Invalid ID type");
                         return;
                     }
                     var groupRepo = new GroupsRepository();
                     var newGroup = groupRepo.Get(g => g.Id == groupId);
-                    if(newGroup == null)
+                    if (newGroup == null)
                     {
                         Helper.PrintColor(ConsoleColor.Red, "Group not found.");
                         goto Groupstudent;
                     }
-                    Student student=new Student { Name= newstudentName,Surname= newstudentSurname ,Age= age, Group= newGroup };
+                    Student student = new Student { Name = newstudentName, Surname = newstudentSurname, Age = age, Group = newGroup };
 
-                    var students =_studentSevice.UpdateStudent(id,student);
-                    if (students != null) {
+                    var students = _studentSevice.UpdateStudent(id, student);
+                    if (students != null)
+                    {
                         Helper.PrintColor(ConsoleColor.Green, $"ID: {students.Id},Name: {students.Name},Surname: {students.Surname},Age: {students.Age},Group: {students.Group.Name}");
                     }
                     else
@@ -295,7 +340,7 @@ namespace Academy.Prezentation.Controllers
                 Helper.PrintColor(ConsoleColor.Red, "Invalid ID type");
                 goto Idget;
             }
-            
+
 
         }
     }

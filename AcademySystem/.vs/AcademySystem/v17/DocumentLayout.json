@@ -11,28 +11,8 @@
       "RelativeMoniker": "D:0:0:{F3B0F5FF-4DFD-4594-B374-1316A5F1D93B}|Academy.Prezentation\\Academy.Prezentation.csproj|solutionrelative:academy.prezentation\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B0F5FF-4DFD-4594-B374-1316A5F1D93B}|Academy.Prezentation\\Academy.Prezentation.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\academy.prezentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3B0F5FF-4DFD-4594-B374-1316A5F1D93B}|Academy.Prezentation\\Academy.Prezentation.csproj|solutionrelative:academy.prezentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\repository\\repostories\\implementations\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|solutionrelative:repository\\repostories\\implementations\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{183143C1-C353-4351-8A2C-41C002B7D144}|Service\\Service.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\service\\sevices\\implementations\\groupsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183143C1-C353-4351-8A2C-41C002B7D144}|Service\\Service.csproj|solutionrelative:service\\sevices\\implementations\\groupsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{183143C1-C353-4351-8A2C-41C002B7D144}|Service\\Service.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\service\\sevices\\implementations\\studentsevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183143C1-C353-4351-8A2C-41C002B7D144}|Service\\Service.csproj|solutionrelative:service\\sevices\\implementations\\studentsevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\repository\\repostories\\implementations\\groupsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|solutionrelative:repository\\repostories\\implementations\\groupsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\repository\\repostories\\interfaces\\irepositorystudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77F36DF2-3899-43F7-B020-696171F4D46A}|Repository\\Repository.csproj|solutionrelative:repository\\repostories\\interfaces\\irepositorystudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F3B0F5FF-4DFD-4594-B374-1316A5F1D93B}|Academy.Prezentation\\Academy.Prezentation.csproj|c:\\users\\asus\\desktop\\consoleapp\\academysystem\\academy.prezentation\\helpers\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3B0F5FF-4DFD-4594-B374-1316A5F1D93B}|Academy.Prezentation\\Academy.Prezentation.csproj|solutionrelative:academy.prezentation\\helpers\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,31 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IRepositoryStudent.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Interfaces\\IRepositoryStudent.cs",
-              "RelativeDocumentMoniker": "Repository\\Repostories\\Interfaces\\IRepositoryStudent.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Interfaces\\IRepositoryStudent.cs",
-              "RelativeToolTip": "Repository\\Repostories\\Interfaces\\IRepositoryStudent.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABIAAAA5AAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "Academy.Prezentation\\Controllers\\StudentController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "Academy.Prezentation\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T16:42:01.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Program.cs",
-              "RelativeDocumentMoniker": "Academy.Prezentation\\Program.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Program.cs",
-              "RelativeToolTip": "Academy.Prezentation\\Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T13:11:06.823Z",
+              "WhenOpened": "2025-11-12T19:45:00.706Z",
               "EditorCaption": ""
             },
             {
@@ -77,71 +45,23 @@
               "RelativeDocumentMoniker": "Academy.Prezentation\\Controllers\\GroupController.cs",
               "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Controllers\\GroupController.cs",
               "RelativeToolTip": "Academy.Prezentation\\Controllers\\GroupController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T10:23:04.197Z",
+              "WhenOpened": "2025-11-12T19:44:58.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "Academy.Prezentation\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "Academy.Prezentation\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAANkAAAAAAAAAAAAAABgBAAAVAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Helper.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Helpers\\Helper.cs",
+              "RelativeDocumentMoniker": "Academy.Prezentation\\Helpers\\Helper.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Academy.Prezentation\\Helpers\\Helper.cs",
+              "RelativeToolTip": "Academy.Prezentation\\Helpers\\Helper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T08:39:14.742Z",
+              "WhenOpened": "2025-11-12T19:44:50.598Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StudentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Implementations\\StudentRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repostories\\Implementations\\StudentRepository.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Implementations\\StudentRepository.cs",
-              "RelativeToolTip": "Repository\\Repostories\\Implementations\\StudentRepository.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAADUAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T08:39:26.263Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GroupsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Implementations\\GroupsRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repostories\\Implementations\\GroupsRepository.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Repository\\Repostories\\Implementations\\GroupsRepository.cs",
-              "RelativeToolTip": "Repository\\Repostories\\Implementations\\GroupsRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAACYAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T10:28:37.372Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StudentSevice.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Sevices\\Implementations\\StudentSevice.cs",
-              "RelativeDocumentMoniker": "Service\\Sevices\\Implementations\\StudentSevice.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Sevices\\Implementations\\StudentSevice.cs",
-              "RelativeToolTip": "Service\\Sevices\\Implementations\\StudentSevice.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T08:39:24.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GroupsService.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Sevices\\Implementations\\GroupsService.cs",
-              "RelativeDocumentMoniker": "Service\\Sevices\\Implementations\\GroupsService.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\ConsoleApp\\AcademySystem\\Service\\Sevices\\Implementations\\GroupsService.cs",
-              "RelativeToolTip": "Service\\Sevices\\Implementations\\GroupsService.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAEIAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T10:28:33.487Z"
             }
           ]
         }

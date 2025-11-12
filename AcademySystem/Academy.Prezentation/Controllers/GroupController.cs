@@ -1,6 +1,7 @@
 ﻿using Academy.Prezentation.Helpers;
 using Domain.Entities;
 using Service.Sevices.Implementations;
+using System.Globalization;
 using Service.Sevices.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,22 +11,42 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
 namespace Academy.Prezentation.Controllers
 {
     internal class GroupController
     {
         GroupsService _groupsService = new();
+        StudentSevice _studentSevice = new();
         public void CreateGroup()
         {
         Name: Helper.PrintColor(ConsoleColor.Blue, "Add Group Name:");
             string groupName = Console.ReadLine();
             if(string.IsNullOrEmpty(groupName))
             {
+               
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Name:");
                 goto Name;
             }
+            var groups = _groupsService.GetAllGroups();
+            foreach (var item in groups)
+            {
+                if (item.Name.Trim().ToLower() == groupName.Trim().ToLower())
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "A group with the same name cannot be created.");
+                    goto Name;
+                }
+            }
         Teacher: Helper.PrintColor(ConsoleColor.Blue, "Add Group Teacher:");
             string groupTeacher = Console.ReadLine();
+            foreach (char item in groupTeacher)
+            {
+                if (!char.IsLetter(item))
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "The SurName should consist of only letters:");
+                    goto Teacher;
+                }
+            }
             if (string.IsNullOrEmpty(groupTeacher))
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Teacher:");
@@ -33,6 +54,7 @@ namespace Academy.Prezentation.Controllers
             }
         Room: Helper.PrintColor(ConsoleColor.Blue, "Add Group Room");
             string groupRoom = Console.ReadLine();
+
             if (string.IsNullOrEmpty(groupRoom))
             {
                 Helper.PrintColor(ConsoleColor.Red, "Add Group Room:");
@@ -88,6 +110,12 @@ namespace Academy.Prezentation.Controllers
             int id;
             bool isGroupId = int.TryParse(groupId, out id);
             if (isGroupId) {
+                var students = _studentSevice.GetAllStudentsByGroupId(id);
+                if (students.Any())
+                {
+                    Helper.PrintColor(ConsoleColor.Red, "There are students in the group.");
+                    return;
+                }
                 _groupsService.DeleteGroup(id);
                 Helper.PrintColor(ConsoleColor.Green, "Data Delete");
 
